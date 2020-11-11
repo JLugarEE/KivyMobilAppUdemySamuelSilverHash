@@ -1,0 +1,169 @@
+1) Rebuilt vertual environment
+
+2) Repeated the lesson 37 
+
+3) Get stuck at 3:11
+
+
+Observations:
+
+A) I have decently compiled code (First picture)
+
+B) I get nearly the same results, but 
+
+C) I didn't have today tasks. 
+	So, afraid to lose the [+] add task button			<<=====<<<<  Should have deleted it!!!!
+
+The problem with it from Documentation:
+
+What is a ScrollView widget?
+The ScrollView widget provides a scrollable/pannable viewport that is clipped at the scrollview’s bounding box. The ScrollView accepts only one child and applies a viewport/window to it according to the scroll_x and scroll_y properties.
+
+So, if you add task via orange [+] widget it destroys itself. 
+
+D) Use menu to add a first today task Exception/Crash (Picture 2)
+	Noticing the probable code range of error, I decide to 
+	compare each of our code blocks here, and against the
+	video.
+
+=============== REF:
+
+i. Exception:
+2020-10-09 00:00:00
+3
+09/10/2020 15:00:00
+2020-10-12 00:00:00
+0
+ Traceback (most recent call last):
+   File "main.py", line 9, in <module>
+     MainApp().run()
+   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+     root = self.build()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 7, in build
+     return MainWindow()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 77, in __init__
+     self.init_view()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 98, in init_view
+     tw.add_widget(task)
+   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\scrollview.py", line 1094, in add_widget
+     raise Exception('ScrollView accept only one widget')
+ Exception: ScrollView accept only one widget
+
+
+HIS Fixes Ref Lesson 38 at 0:44:
+===================================
+        for t in all_tasks:
+            date, time = t[2].rsplit(' ',1)
+
+            if self.clean_date(date):
+                task = Today()
+                task.name = t[1].upper()
+                task.time = time
+                task.date = date
+                task.size_hint = (None, 1)
+                # use Window height
+                task.size = [scroll_parent.width/2.4, 45]
+                tw.add_widget(task)
+            else:
+                task = Upcoming()
+                task.name = t[1]
+                task.time = ' '.join([date, time])
+                task.date = date
+                task.size_hint = [1, None]
+                task.height = dp(100)
+                
+            for child in tw.children:
+                if type(child) == NewButton:
+                    tw.remove_widget(child)
+                    break
+                uw.add_widget(task)
+
+            
+
+    def clean_date(self, date: str):
+
+
+My Hybrid / Lesson 37 at 3:11 code block ref:
+================================================
+[68]
+[69]class Upcoming(Task):
+[70]    pass
+[71]
+[72]class MainWindow(BoxLayout):
+[73]    def __init__(self, **kw):
+[74]        super().__init__(**kw)
+[75]        self.db = Database()
+[76]
+[77]        self.init_view()
+[78]
+[79]    def init_view(self):
+[80]        """ delete a task """
+[81]        all_tasks = self.db.get_tasks()
+[82]
+[83]        scroll_parent = Window
+[84]        # ref. to size new widgets
+[85]        tw = self.ids.today_wrapper
+[86]        uw = self.ids.upcoming
+[87]        #_wrapper     # was this but wrongly picked
+[88]        #uw = self.ids.upcomer  # adds to grid layout see main.kv
+[89]
+[90]        for t in all_tasks:
+[91]            date, time = t[2].rsplit(' ',1)
+[92]
+[93]            if self.clean_date(date):
+[94]                task = Today()
+[95]                task.size_hint = (None, 1)
+[96]                # use Window height
+[97]                task.size = [scroll_parent.width/2.4, 45]
+[98]                tw.add_widget(task)
+[99]            else:
+[100]                task = Upcoming()
+[101]                # from KV upcoming          name: 'upcoming 01', size_hint: (1, None)
+[102]                task.size_hint = [1, None]
+[103]                # from KV upcoming          name: 'upcoming 01', height: mtx.dp(100)
+[104]                task.height = dp(100)
+[105]
+[106]                uw.add_widget(task)
+[107]
+[108]            task = Today()
+[109]            task.name = t[1]
+[110]            print(date, time)
+[111]            task.time = time
+[112]            task.date = date
+[113]            #task.size = [100, 200]
+[114]
+[115]
+[116]
+[117]    def clean_date(self, date: str):
+
+
+But same error
+2020-10-09 00:00:00
+3
+2020-10-12 00:00:00
+0
+ Traceback (most recent call last):
+   File "main.py", line 9, in <module>
+     MainApp().run()
+   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+     root = self.build()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 7, in build
+     return MainWindow()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 77, in __init__
+     self.init_view()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 101, in init_view
+     tw.add_widget(task)
+   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\scrollview.py", line 1094, in add_widget
+     raise Exception('ScrollView accept only one widget')
+ Exception: ScrollView accept only one widget
+
+
+E) After the Add new menu, it should always check for the orange [+] widget and delete it if it exists. 
+	This is a bad situation; it locks any possibilty of fixing manually via python/database commands
+
+	CRITERIA IF TASKS COUNT > 2 REMOVE ORANGE [+]
+
+RESULTS: Can't fix the Exception/db due to ORANGE [+] and new database entry!
+
+Forced to try to go back & recreate this situation, again.
+

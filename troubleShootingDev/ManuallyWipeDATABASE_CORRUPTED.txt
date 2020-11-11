@@ -1,0 +1,36 @@
+REFERENCE TROUBLE SHOOTING DOC: GettingToDBcorruption.docx
+
+DOS COMMANDS:
+=============
+dir /s /b *.old
+df app\storage
+ren app\storage\db.py db.CORRUPTED
+ren app\storage\db.sqlite db.sqliteCORRUPTED
+df app\storage
+
+EXECUTION CONSOLE:
+==================
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>dir /s /b *.old
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage\db.OLD
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>df app\storage
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage
+09/26/2020  08:57 AM            12,288 db.OLD
+10/01/2020  04:35 PM             4,011 db.py
+09/25/2020  09:17 AM             3,862 db.py_Lsn31_dbTested
+09/25/2020  09:17 AM             3,862 db.py_Lsn32_addTask2db
+10/01/2020  03:55 PM            12,288 db.sqlite
+               5 File(s)         36,311 bytes
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>ren app\storage\db.py db.CORRUPTED
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>ren app\storage\db.sqlite db.sqliteCORRUPTED
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>df app\storage
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage
+10/01/2020  04:35 PM             4,011 db.CORRUPTED
+09/26/2020  08:57 AM            12,288 db.OLD
+09/25/2020  09:17 AM             3,862 db.py_Lsn31_dbTested
+09/25/2020  09:17 AM             3,862 db.py_Lsn32_addTask2db
+10/01/2020  03:55 PM            12,288 db.sqliteCORRUPTED
+               5 File(s)         36,311 bytes

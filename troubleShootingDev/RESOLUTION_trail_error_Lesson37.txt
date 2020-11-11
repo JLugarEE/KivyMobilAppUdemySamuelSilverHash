@@ -1,0 +1,122 @@
+Got error:
+
+[INFO   ] [GL          ] NPOT texture support is available
+ Traceback (most recent call last):
+   File "kivy\properties.pyx", line 860, in kivy.properties.ObservableDict.__getattr__
+ KeyError: 'today_wrapper'
+
+ During handling of the above exception, another exception occurred:
+
+ Traceback (most recent call last):
+   File "main.py", line 9, in <module>
+     MainApp().run()
+   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+     root = self.build()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 7, in build
+     return MainWindow()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 77, in __init__
+     self.init_view()
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 84, in init_view
+     tw = self.ids.today_wrapper
+   File "kivy\properties.pyx", line 863, in kivy.properties.ObservableDict.__getattr__
+ AttributeError: 'super' object has no attribute '__getattr__'
+
+
+A)  Compare to TEACHERS CODE
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\view.py ..\src_home\app\src_view.py) do @find /i "self.ids.today_wrapper" %~dfA /c
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\VIEW.PY: 2
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\SRC_HOME\APP\SRC_VIEW.PY: 2
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\view.py ..\src_home\app\src_view.py) do @find /i "self.ids.today_wrapper" %~dfA /n
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\VIEW.PY
+[84]        tw = self.ids.today_wrapper
+[153]        tw = self.ids.today_wrapper
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\SRC_HOME\APP\SRC_VIEW.PY
+[134]        tw = self.ids.today_wrapper
+[308]        tw = self.ids.today_wrapper
+
+
+B)  Not likely the cause. So, Look for Kivy files:
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\main.kv ..\src_home\app\main.kv) do @find /i "self.ids.today_wrapper" %~dfA /n
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\MAIN.KV
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\SRC_HOME\APP\MAIN.KV
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\main.kv ..\src_home\app\main.kv) do @find /i "today_wrapper" %~dfA /n
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\MAIN.KV
+[223]                                        #today_wrapper
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\SRC_HOME\APP\MAIN.KV
+[197]                                    id: today_wrapper
+
+
+B)  That didn't work. So, RE-compare code differences:
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\main.kv ) do @find /n /v "" %~dfA | find "[22"
+[22]                    Color:
+[220]                                    size_hint__y: None
+[221]                                    height: self.parent.height
+[222]                                    effect_cls: 'ScrollEffect'
+[223]                                    GridLayout:
+[224]                                        id: upcoming
+[225]                                        #today_wrapper
+[226]                                        rows: 1
+[227]                                        padding: ["10dp","10dp","10dp","20dp"]
+[228]                                        spacing: [mtx.dp(10)]
+[229]                                        size: self.minimum_size
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\src_home\app\main.kv) do @find /n /v "" %~dfA | find "[19"
+[19]            BoxLayout:
+[190]                                id: sv_today
+[191]                                do_scroll: [True, False]
+[192]                                scroll_type: ['content']
+[193]                                size_hint__y: None
+[194]                                height: self.parent.height
+[195]                                effect_cls: 'ScrollEffect'
+[196]                                GridLayout:
+[197]                                    id: today_wrapper
+[198]                                    rows: 1
+[199]                                    padding: ["10dp","10dp","10dp","20dp"]
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for %A in (..\app_home\app\main.kv ..\src_home\app\main.kv) do @find /i "id: upcoming" %~dfA /n
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\MAIN.KV
+[216]                                    id: upcoming_wrapper
+[224]                                        id: upcoming
+[273]                                id: upcoming_wrapper
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\SRC_HOME\APP\MAIN.KV
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>
+
+
+C) made my code as follows:
+
+                                    text_size: self.size
+                                    halign: 'right'
+                            BoxLayout:
+                                size_hint_y: .9
+                                id: scroll_parent
+                                ScrollView:
+                                    id: today_wrapper
+                                    #sv_today
+                                    do_scroll: [True, False]
+                                    scroll_type: ['content']
+                                    size_hint__y: None
+                                    height: self.parent.height
+                                    effect_cls: 'ScrollEffect'
+                                    GridLayout:
+                                        id: upcoming
+                                        #today_wrapper
+                                        rows: 1
+                                        padding: ["10dp","10dp","10dp","20dp"]
+
+VICTORY.

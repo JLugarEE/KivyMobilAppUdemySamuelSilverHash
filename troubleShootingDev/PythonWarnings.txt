@@ -1,0 +1,17 @@
+
+---------- KIVY_20-09-24_0.TXT
+[6][INFO   ] Kivy: Installed at "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\__init__.py"
+[26][WARNING] stderr:   File "main.py", line 9, in <module>
+[28][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+[30][WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 6, in build
+[32][WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 71, in __init__
+[34][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\boxlayout.py", line 145, in __init__
+[36][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\layout.py", line 76, in __init__
+[38][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 361, in __init__
+[40][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 469, in apply_class_lang_rules
+[42][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 538, in apply
+[44][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[46][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[48][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[51][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 616, in _apply_rule
+[53][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\factory.py", line 131, in __getattr__

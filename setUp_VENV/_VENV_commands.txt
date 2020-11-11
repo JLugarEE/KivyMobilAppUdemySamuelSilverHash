@@ -1,0 +1,96 @@
+Saving VENV requirements:
+=========================
+A) Export package listing to safe/backup folder (..\setUp_VENV\)
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>pip freeze > ..\setUp_VENV\reqts11Sep20.txt
+
+B) Install from requirements file only to your ENV:        ********************
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>pip install -r ..\setUp_VENV\reqts11Sep20.txt
+
+
+Remove VEnv:
+============
+
+1) Change to parent dir
+C:\Users\madeI>cd C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home
+
+2) show folder:
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>dd C:\Users\madeI\KivyApps\ki*
+
+
+Making a VENV:
+================
+
+1) cd C:\Users\madeI\KivyApps\
+
+2) python -m venv kivyENV
+	wait a couple minutes  as installed...
+
+3) cd C:\Users\madeI\
+	my default
+
+4) kv  (batch to switch to project TaskMgr\app_home)
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>  { (kivyENV) is started }
+
+5) deactivate ENV
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>deactivate 
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>
+
+
+Installing Packages:
+=====================
+
+A) Show New Installation
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>pip list
+Package    Version
+---------- -------
+pip        20.1.1
+setuptools 47.1.0
+
+B) Install a package
+pip install {package-name}
+
+
+LESSON 16:
+===========
+
+1) Install DATE Picker:
+a. (kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>garden install --kivy circularlayout
+
+b. (kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>garden install --kivy circulardatetimepicker
+
+c. Install Fonts Resource lesson 16 as follows:
++app_home
+|
++---assets
+|   \---fonts				<<======<<<  FOLDER 1
+|           Material-Design-Iconic-Font.ttf		<<======<<< 	File 1
+|           zmd.fontd				<<======<<<  		File 2
+|
+
+d. (kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>garden install --kivy iconfonts
+
+e. (kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>garden install --kivy navigationdrawer
+
+
+LESSON 31:
+=============
+
+A) copy backup files to destinations in my profile (yours will different, make necessary changes):
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\main.py_Lsn31_dbTested C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\main.py
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv_Lsn31_dbTested C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py_Lsn31_dbTested C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage\db.py_Lsn31_dbTested C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage\db.py
+
+
+LESSON 34:
+=============
+
+A) copy backup files to destinations in my profile (yours will different, make necessary changes):
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\main.py_Lsn34 C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\main.py
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv_Lsn34 C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv
+copy /y C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py_Lsn34 C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py
+
+
+
+
+

@@ -1,0 +1,55 @@
+[INFO   ] Logger: Record log in C:\Users\madeI\.kivy\logs\kivy_20-09-24_0.txt
+[INFO   ] deps: Successfully imported "kivy_deps.angle" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.glew" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.sdl2" 0.2.0
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\__init__.py"
+[INFO   ] Python: v3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]
+[INFO   ] Python: Interpreter at "C:\Users\madeI\KivyApps\kivyENV\Scripts\python.exe"
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL" graphics system
+[INFO   ] GL: GLEW initialization succeeded
+[INFO   ] GL: Backend used <glew>
+[INFO   ] GL: OpenGL version <b'4.3.0 - Build 20.19.15.5058'>
+[INFO   ] GL: OpenGL vendor <b'Intel'>
+[INFO   ] GL: OpenGL renderer <b'Intel(R) HD Graphics 4400'>
+[INFO   ] GL: OpenGL parsed version: 4, 3
+[INFO   ] GL: Shading version <b'4.30 - Build 20.19.15.5058'>
+[INFO   ] GL: Texture max size <16384>
+[INFO   ] GL: Texture max units <32>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "main.py", line 9, in <module>
+[WARNING] stderr:     MainApp().run()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+[WARNING] stderr:     root = self.build()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 6, in build
+[WARNING] stderr:     return MainWindow()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 71, in __init__
+[WARNING] stderr:     super().__init__(**kw)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\boxlayout.py", line 145, in __init__
+[WARNING] stderr:     super(BoxLayout, self).__init__(**kwargs)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\layout.py", line 76, in __init__
+[WARNING] stderr:     super(Layout, self).__init__(**kwargs)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 361, in __init__
+[WARNING] stderr:     rule_children=rule_children)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 469, in apply_class_lang_rules
+[WARNING] stderr:     rule_children=rule_children)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 538, in apply
+[WARNING] stderr:     rule_children=rule_children)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[WARNING] stderr:     child, crule, rootrule, rule_children=rule_children)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[WARNING] stderr:     child, crule, rootrule, rule_children=rule_children)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[WARNING] stderr:     child, crule, rootrule, rule_children=rule_children)
+[WARNING] stderr:   [Previous line repeated 5 more times]
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 616, in _apply_rule
+[WARNING] stderr:     cls = Factory_get(cname)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\factory.py", line 131, in __getattr__
+[WARNING] stderr:     raise FactoryException('Unknown class <%s>' % name)
+[WARNING] stderr: kivy.factory.FactoryException: Unknown class <Upcoming>

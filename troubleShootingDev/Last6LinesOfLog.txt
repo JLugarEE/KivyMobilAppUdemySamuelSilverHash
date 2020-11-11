@@ -1,0 +1,7 @@
+[49][WARNING] stderr:     child, crule, rootrule, rule_children=rule_children)
+[50][WARNING] stderr:   [Previous line repeated 5 more times]
+[51][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 616, in _apply_rule
+[52][WARNING] stderr:     cls = Factory_get(cname)
+[53][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\factory.py", line 131, in __getattr__
+[54][WARNING] stderr:     raise FactoryException('Unknown class <%s>' % name)
+[55][WARNING] stderr: kivy.factory.FactoryException: Unknown class <Upcoming>

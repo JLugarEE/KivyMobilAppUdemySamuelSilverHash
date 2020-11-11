@@ -1,0 +1,70 @@
+MADE from/by the following command:
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr>FOR /F "usebackq skip=69 tokens=*" %A in (`find /v /n "" app_home\app\view.py ` ) do @echo.%A
+
+[68]
+[69]class Upcoming(Task):
+[70]    pass
+[71]
+[72]class MainWindow(BoxLayout):
+[73]    def __init__(self, **kw):
+[74]        super().__init__(**kw)
+[75]        self.db = Database()
+[76]
+[77]        self.init_view()
+[78]
+[79]    def init_view(self):
+[80]        """ delete a task """
+[81]        all_tasks = self.db.get_tasks()
+[82]
+[83]        scroll_parent = Window
+[84]        # ref. to size new widgets
+[85]        tw = self.ids.today_wrapper
+[86]        uw = self.ids.upcoming
+[87]        #_wrapper     # was this but wrongly picked
+[88]        #uw = self.ids.upcomer  # adds to grid layout see main.kv
+[89]
+[90]        for t in all_tasks:
+[91]            date, time = t[2].rsplit(' ',1)
+[92]
+[93]            if self.clean_date(date):
+[94]                task = Today()
+[95]                task.size_hint = (None, 1)
+[96]                # use Window height
+[97]                task.size = [scroll_parent.width/2.4, 45]
+[98]                tw.add_widget(task)
+[99]            else:
+[100]                task = Upcoming()
+[101]                # from KV upcoming          name: 'upcoming 01', size_hint: (1, None)
+[102]                task.size_hint = [1, None]
+[103]                # from KV upcoming          name: 'upcoming 01', height: mtx.dp(100)
+[104]                task.height = dp(100)
+[105]
+[106]                uw.add_widget(task)
+[107]
+[108]            task = Today()
+[109]            task.name = t[1]
+[110]            print(date, time)
+[111]            task.time = time
+[112]            task.date = date
+[113]            #task.size = [100, 200]
+[114]
+[115]
+[116]
+[117]    def clean_date(self, date: str):
+[118]        today = datetime.today()
+[119]        _date = date.split('/')
+[120]        if len(_date) < 3:
+[121]            _date = date.split('-')
+[122]        date_ = [int(x) for x in reversed(_date)]
+[123]
+[124]
+[125]        task_date = datetime(date_[0],date_[1],date_[2])
+[126]        print(task_date)
+[127]        x = abs((today - task_date).days)
+[128]        print(x)
+[129]        if x == 0:
+[130]            return True
+[131]        else:
+[132]            return False
+[133]
+[134]

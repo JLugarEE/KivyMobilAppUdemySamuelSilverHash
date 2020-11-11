@@ -1,0 +1,81 @@
+Folder PATH listing for volume Windows
+Volume serial number is BA4C-BABD
+C:\USERS\{myORyourHomeUserName}\KIVYAPPS\PHONEAPP\TSKMGR
++---app_home			<<---<<< My Lesson set-up
+|   +---app
+|   |   +---assets
+|   |   |   \---fonts
+|   |   +---storage
+|   |   |   \---__pycache__
+|   |   \---__pycache__
+|   +---datepicker
+|   |   +---.git
+|   |   |   +---branches
+|   |   |   +---hooks
+|   |   |   +---info
+|   |   |   +---logs
+|   |   |   |   \---refs
+|   |   |   |       +---heads
+|   |   |   |       \---remotes
+|   |   |   |           \---origin
+|   |   |   +---objects
+|   |   |   |   +---01
+|   |   |   |   +---49
+|   |   |   |   +---72
+|   |   |   |   +---7f
+|   |   |   |   +---90
+|   |   |   |   +---9f
+|   |   |   |   +---a8
+|   |   |   |   +---c9
+|   |   |   |   +---ff
+|   |   |   |   +---info
+|   |   |   |   \---pack
+|   |   |   \---refs
+|   |   |       +---heads
+|   |   |       +---remotes
+|   |   |       |   \---origin
+|   |   |       \---tags
+|   |   \---__pycache__
+|   +---git_arch		<<---<<< Git Repository JLugarEE
+|   |   +---BatchCMDlets			<<---<<< Normally in app_home
+|   |   +---LessonFiles				<<---<<< Normally in app_home
+|   |   +---setUp_VENV			<<---<<< Original Location 4 lines down (sub of parent)
+|   |   \---troubleShootingDev			<<---<<< Original Location last line/dir below
+|   \---__pycache__
++---setUp_VENV			<<---<<< Original Location copied to Git repo
++---src_home			<<---<<< Mthembo's Code Git repo local, which
+|   +---app				 allows for quick compare to app_home.
+|   |   +---assets
+|   |   |   \---fonts
+|   |   +---storage
+|   |   |   \---__pycache__
+|   |   \---__pycache__
+|   \---datepicker
+|       +---.git
+|       |   +---branches
+|       |   +---hooks
+|       |   +---info
+|       |   +---logs
+|       |   |   \---refs
+|       |   |       +---heads
+|       |   |       \---remotes
+|       |   |           \---origin
+|       |   +---objects
+|       |   |   +---01
+|       |   |   +---49
+|       |   |   +---72
+|       |   |   +---7f
+|       |   |   +---90
+|       |   |   +---9f
+|       |   |   +---a8
+|       |   |   +---c9
+|       |   |   +---ff
+|       |   |   +---info
+|       |   |   \---pack
+|       |   \---refs
+|       |       +---heads
+|       |       +---remotes
+|       |       |   \---origin
+|       |       \---tags
+|       \---__pycache__
+\---troubleShootingDev		<<---<<< Original Location copied to Git repo

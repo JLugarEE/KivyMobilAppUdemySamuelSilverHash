@@ -1,0 +1,20 @@
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\STORAGE\DB.PY
+    def __init__(self):
+    def db_connect(self):
+    def add_task(self, task: tuple):
+    def delete_task(self, name):
+    def get_tasks(self)
+    def update_task(self, task: list):
+    def auth_user(self, user: tuple):
+    def add_user(self, user: tuple):
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>find "db." dbl.cmd
+
+---------- DBL.CMD
+echo.db.add_user(user)
+echo.db.auth_user(('aRealUserName','dumbyPassw')) REM this one is ok to print as it is a place holder
+echo.db.add_task(task)
+echo.db.get_tasks()
+echo.db.update_task()
+echo.db.delete_task('firsTask')

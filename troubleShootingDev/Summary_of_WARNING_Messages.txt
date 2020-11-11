@@ -1,0 +1,74 @@
+KivyFileWarnings.txt
+
+---------- KIVY_20-09-24_0.TXT				(<<====<<<  NONE HERE!!!!)
+
+
+PythonWarnings.txt
+
+---------- KIVY_20-09-24_0.TXT
+[6][INFO   ] Kivy: Installed at "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\__init__.py"
+[26][WARNING] stderr:   File "main.py", line 9, in <module>
+[28][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 829, in run
+[30][WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 6, in build
+[32][WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 71, in __init__
+[34][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\boxlayout.py", line 145, in __init__
+[36][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\layout.py", line 76, in __init__
+[38][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 361, in __init__
+[40][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\widget.py", line 469, in apply_class_lang_rules
+[42][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 538, in apply
+[44][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[46][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[48][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 659, in _apply_rule
+[51][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 616, in _apply_rule
+[53][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\factory.py", line 131, in __getattr__
+
+
+Last6LinesOfLog.txt
+[49][WARNING] stderr:     child, crule, rootrule, rule_children=rule_children)
+[50][WARNING] stderr:   [Previous line repeated 5 more times]
+[51][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 616, in _apply_rule
+[52][WARNING] stderr:     cls = Factory_get(cname)
+[53][WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\factory.py", line 131, in __getattr__
+[54][WARNING] stderr:     raise FactoryException('Unknown class <%s>' % name)
+[55][WARNING] stderr: kivy.factory.FactoryException: Unknown class <Upcoming>					(<<====<<<  ONE CLUE HERE!!!!)
+
+
+THE CLUE IS: <Upcoming>
+
+Finding the clue:
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>dir *.py /s /b
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\main.py
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\datepicker\datepicker.py
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for /f "usebackq" %A in (`dir *.py /s /b`) do @find /c /i "Upcoming" %A | find "---"
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\MAIN.PY: 0
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\VIEW.PY: 1
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\__INIT__.PY: 0
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\DATEPICKER\DATEPICKER.PY: 0
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>find /n /i "Upcoming" APP\VIEW.PY
+
+---------- APP\VIEW.PY
+[66]class UpComing(Task):		<<============<<<<<		Here the CASE should be mostly obvious (u,c) are capitalize only u in clue, below.
+
+AGAIN, THE CLUE IS: <Upcoming>
+
+FYI the Structure of *.py and *.kv files in the folder:
+C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>dir *.py *.kv /s | find " " | find /v "Volume"
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home
+09/18/2020  09:26 PM               310 main.py
+               1 File(s)            310 bytes
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app
+09/24/2020  08:49 AM             3,521 view.py
+09/18/2020  09:29 PM               136 __init__.py
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app
+09/21/2020  09:54 PM            18,039 main.kv
+               3 File(s)         21,696 bytes
+ Directory of C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\datepicker
+09/19/2020  05:59 PM            13,705 datepicker.py
+               1 File(s)         13,705 bytes
+     Total Files Listed:
+               5 File(s)         35,711 bytes
+               0 Dir(s)  915,729,408,000 bytes free

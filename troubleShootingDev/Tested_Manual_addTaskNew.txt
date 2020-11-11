@@ -1,0 +1,182 @@
+Check db manually (after error below) from application Lesson 32 (code verified @ 8:06/8:34):
+==================
+>>> db = Database()
+>>> task = ('tyhujik', '25/09/2020 22:16:00')
+>>> db.add_task(task)
+True
+>>> db.get_tasks()
+[(1, 'tyhujik', '25/09/2020 22:16:00')]
+>>>
+
+            # add task to db
+            date = ' '.join([xtask[1].text, xtask[2].text])
+            print(date)  # 25/09/2020 10:21:00
+            taskb = (xtask[0].text, date)				<<=====<<< TASKB 
+            print(taskb)
+            if self.db.add_task(taskb):
+                tw.add_widget(task)
+                
+            mv.dismiss()
+            
+
+
+25/09/2020 22:16:00
+('tyhujik', '25/09/2020 22:16:00')					<<=====<<< TASKB PRINTED
+[INFO   ] [Base        ] Leaving application in progress...
+ Traceback (most recent call last):
+   File "main.py", line 9, in <module>
+....
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 112, in add_task
+     if self.db.add_task(taskb):
+ TypeError: add_task() missing 1 required positional argument: 'task'
+
+Video was edited @ 6:38 - 6:44 because you repeated "Let's just run this".
+
+What is missing?
+My thoughts: 1) initially the add_task of view.py is shown:
+    def add_new(self):
+        """Open a popup to get the task details
+
+        Returns
+        -------
+        None
+
+        """
+        nt = NewTask()
+        nt.open()
+
+    def add_task(self, mv, xtask: tuple):
+=====================================================
+2) so my error is that the "mv" gets in the way for the line:
+            if self.db.add_task(taskb):
+
+3) I think I'm on the right track, because your end code has the following "clean up"/evidence in view.py:
+
+        tw = self.ids.today_wrapper
+        uw = self.ids.upcoming
++++
+                if self.db.add_task(task_):
+                    tw.add_widget(task)
+
+4) however, the changes are too many to reconstruct. So, I'm thinking of passing an empty set for lesson's "mv".
+So, make these changes:
+            taskb = ('', xtask[0].text, date)
+            print(taskb)
+            if self.db.add_task(taskb):
+                tw.add_widget(task)
+                
+            mv.dismiss()
+
+, and get:
+
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv", line 367, in <module>
+     on_release: app.root.add_task(root,(task_name, task_date, task_time))
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 112, in add_task
+     if self.db.add_task(taskb):
+ TypeError: add_task() missing 1 required positional argument: 'task'
+
+RECALL:
+    def add_task(self, mv, xtask: tuple):
+=====================================================
+
+5) (RE)Thinking about lines of task in the prior 10 lines:
+a) \main.kv", line 367, in <module>
+     on_release: app.root.add_task(root,(task_name, task_date, task_time))
+b) view.py", line 112, in add_task
+     if self.db.add_task(taskb):
+
+6) So, a) try modifying 5a to: on_release: app.root.add_task(root,(task_name, ~task_date task_time~)) # ~date~  the format
+	However, decide against that because it has been the same format to project end.
+
+7) Review what works manually from python from 
+>>> db = Database()
+>>> task = ('ManuallyAdded', '25/09/2020 22:16:00')
+>>> db.add_task(task)
+True
+>>> db.get_tasks()
+[(1, 'tyhujik', '25/09/2020 22:16:00'), (2, 'ManuallyAdded', '25/09/2020 22:16:00')]
+>>>
+
+    ('tyhujik', '25/09/2020 22:16:00')					<<=====<<< TASKB PRINTED
+
+       ('rfgv', '25/09/2020 03:00:00')
+[INFO   ] [Base        ] Leaving application in progress...
+ Traceback (most recent call last):
+   File "main.py", line 9, in <module>
+...
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv", line 367, in <module>
+     on_release: app.root.add_task(root,(task_name, task_date, task_time))
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 112, in add_task
+     if self.db.add_task(taskb):
+ TypeError: add_task() missing 1 required positional argument: 'task'
+
+8) I give up any IDEAS?
+
+==================================================== FIX:
+So, I figured it out with a little help from the web, and reviewing the video.
+
+The Answer was I had NOT had the parens on the statement for the database below from app\view.py:
+
+class MainWindow(BoxLayout):
+
+    def __init__(self, **kw):
+
+        super().__init__(**kw)
+
+        self.db = Database()
+
+----------------------------------------------------------------------- ERROR Re-visited with a similar error from web:
+
+
+Usually, the error is as follows a web example:
+Traceback (most recent call last):
+  File "C:\Users\Dom\Desktop\test\test.py", line 7, in <module>
+    p = Pump.getPumps()
+TypeError: getPumps() missing 1 required positional argument: 'self'
+
+    p = Pump() is required
+-------------------------------------------  A 2nd example:
+>>> class TestClass:
+        def __init__(self):
+            print("in init")
+        def testFunc(self):
+            print("in Test Func")
+
+
+>>> testInstance = TestClass()
+in init
+>>> testInstance.testFunc()
+in Test Func
+
+
+---------- ..\TROUBLESHOOTING\KIVY_20-09-25_34.TXT
+[57][WARNING] stderr:     on_release: app.root.add_task(root,(task_name, task_date, task_time))
+[58][WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 112, in add_task
+[59][WARNING] stderr:     if self.db.add_task(taskb):
+[60]    [WARNING] stderr: TypeError: add_task() missing 1 required positional argument: 'task'
+                                     ^^^^^^^^-----------------------\                    ++++ not identified to left between ()
+								    |
+So in line 59, again:						    |
+[59][WARNING] stderr:     if self.db.add_task(taskb):		    |
+			     ^ A  ^B    ^---------------------------/		So, look before the position prior the match TypeError to STATEMENT
+
+Fair game to search are self., self(, self.db. and self.db(
+
+====================== RETROSPECTIVELY, BEST SEARCH:
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>find /n "self.db" ..\APP_HOME\APP\VIEW.PY ..\SRC_HOME\APP\src_VIEW.PY
+
+---------- ..\APP_HOME\APP\VIEW.PY
+[72]        self.db = Database					<<=======<<<  NO () AFTER Database
+[112]            if self.db.add_task(taskb):
+[143]##        if self.db.auth_user((uname, upass)):
+
+---------- ..\SRC_HOME\APP\SRC_VIEW.PY
+[118]        self.db = Database()				<<=======<<<  Like here: Database()
+[132]        all_tasks = self.db.get_tasks()
+[254]            if self.db.update_task(xtask):
+[276]        if self.db.delete_task(name):
+[330]                if self.db.add_task(task_):
+[340]                if self.db.add_task(task_):
+[376]            if self.db.add_user(user):
+[398]        if self.db.auth_user((uname, upass)):

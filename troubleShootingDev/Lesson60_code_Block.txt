@@ -1,0 +1,97 @@
+MADE from/by the following command:
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr>FOR /F "usebackq skip=112 tokens=*" %A in (`find /v /n "" src_home\app\src_view.py ` ) do @echo.%A | find /v "[2" | find /v "[3"
+
+[111]    pass 
+[112]class Upcoming(Task): 
+[113]    pass 
+[114] 
+[115]class MainWindow(BoxLayout): 
+[116]    def __init__(self, ads, **kw): 
+[117]        super().__init__(**kw) 
+[118]        self.db = Database() 
+[119]        self.ads = ads 
+[120] 
+[121]        self.init_view() 
+[122] 
+[123]    def init_view(self): 
+[124]        """Short summary. 
+[125] 
+[126]        Returns 
+[127]        ------- 
+[128]        type 
+[129]            Description of returned object. 
+[130] 
+[131]        """ 
+[132]        all_tasks = self.db.get_tasks() 
+[133]        scroll_parent = Window 
+[134]        tw = self.ids.today_wrapper 
+[135]        uw = self.ids.upcoming 
+[136] 
+[137]        for t in all_tasks: 
+[139] 
+[140]            if self.clean_date(date): 
+[141]                task = Today() 
+[142]                task.og_name = t[1] 
+[143]                task.name = t[1].upper() 
+[144]                task.time = time 
+[145]                task.date = date 
+[146]                task.size_hint = (None, 1) 
+[147]                task.size =  [scroll_parent.width/2.4, 45] 
+[148] 
+[149]                itask = Today() 
+[150]                itask.name = t[1].upper() 
+[151]                itask.og_name = t[1] 
+[152]                itask.time = time 
+[153]                itask.date = date 
+[154]                itask.size_hint = (None, None) 
+[155]                itask.size =  [scroll_parent.width/2.4, round(scroll_parent.height/4)] 
+[156] 
+[157]                tw.add_widget(task) 
+[158]                self.ids.all_today.add_widget(itask) 
+[159]            else: 
+[160]                task = Upcoming() 
+[161]                task.og_name = t[1] 
+[162]                task.name = t[1].upper() 
+[163]                task.time = ' '.join([date, time]) 
+[164]                task.date = date 
+[165]                task.size_hint = [1, None] 
+[166]                task.height = dp(100) 
+[167] 
+[168]                uw.add_widget(task) 
+[169]
+[170] 
+[171]            for child in tw.children: 
+[172]                if type(child) == NewButton: 
+[173]                    tw.remove_widget(child) 
+[174]                    break 
+[175] 
+[176] 
+[177]            # task.size = [100, 200] 
+[178] 
+[179] 
+[180] 
+[181]    def clean_date(self, date: str): 
+[182]        """Short summary. 
+[183] 
+[184]        Parameters 
+[185]        ---------- 
+[186]        date : str 
+[187]            Description of parameter `date`. 
+[188] 
+[189]        Returns 
+[190]        ------- 
+[191]        type 
+[192]            Description of returned object. 
+[193] 
+[194]        """ 
+[195]        today = datetime.today() 
+[196]        _date = date.split('/') 
+[197]
+[198]            _date = date.split('-') 
+[199]        date_ = [int(x) for x in reversed(_date)] 
+
+
+[400]            self.ads.show_banner() 
+[401] 
+[402]        username.text = '' 
+[403]        password.text = '' 

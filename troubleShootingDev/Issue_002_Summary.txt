@@ -1,0 +1,79 @@
+[INFO   ] [Python      ] Interpreter at "C:\Users\madeI\KivyApps\kivyENV\Scripts\python.exe"
+[INFO   ] [Factory     ] 184 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
+[INFO   ] [Text        ] Provider: sdl2
+ Traceback (most recent call last):
+   File "<stdin>", line 1, in <module>
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\__init__.py", line 2, in <module>
+     from .view import MainWindow
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 11, in <module>
+     from app.storage.db import Database
+   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\storage\db.py", line 28
+     ret conn
+            ^											(<<======<<<  ONE CLUE)
+ SyntaxError: invalid syntax
+>>> ^Z
+
+
+
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for /f "usebackq" %A in (`dir *.py /s /b`) do @find /n /i "conn" %A
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\MAIN.PY
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\VIEW.PY
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\__INIT__.PY
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\STORAGE\DB.PY
+[10]            conn = sqlite3.connect(os.path.join(self.path, 'db.sqlite'))
+[11]            cur = conn.cursor()
+[24]    def db_connect(self):
+[25]            conn = sqlite3.connect(os.path.join(self.path, 'db.sqlite'))
+[26]            #cur = conn.cursor()
+[28]            ret conn											(<<====<<< BAD line, but conn is good variable)
+[36]        conn = self.db_conn()
+[37]        cur = conn.cursor()
+[46]            conn.commit()
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\DATEPICKER\DATEPICKER.PY
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>for /f "usebackq" %A in (`dir *.py /s /b`) do @find /n /i "ret" %A        (So is "ret" a good Variable)
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\MAIN.PY
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\VIEW.PY
+[78]        Returns
+[127]        Returns
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\__INIT__.PY
+[6]        return MainWindow()
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\APP\STORAGE\DB.PY
+[28]            ret conn										(<<=====<<<   NOPE! very lonely here!  Not a good variable)
+[48]            return True
+[51]            return False
+
+---------- C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR\APP_HOME\DATEPICKER\DATEPICKER.PY
+[324]    """ Return list with months names """
+[333]        return result
+[336]        return get_month_names_eng()
+[339]    """ Return list with months names in english """
+[345]    return result
+[348]    """ Return list with days abbreviations """
+[360]    return result
+[378]    return [(prev_y, prev_m), (y, m), (next_y, next_m)]
+[382]    Return list of month's weeks, which day
+[405]        return month
+[435]    return month
+[445]    return result
+[448]    """ Return list with today date """
+[450]    return [datetime.now().day, datetime.now().month, datetime.now().year]
+[453]    """ Return today date dd.mm.yyyy like 28.02.2015 """
+[455]    return datetime.now().strftime("%d/%m/%Y")
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>
+
+
+
+

@@ -1,0 +1,9 @@
+>>> db = Database()
+>>> db.auth_user(('Jlugar','passw'))
+[]
+>>> user = ('Jlugar','As4morJkL;')
+>>> db.add_user(user)
+True
+>>> db.auth_user(('Jlugar','passw'))
+[(1, 'Jlugar', '2b482ed9fccf15fc9e7dcf6c6e500fa73095ac9a29b1a27ceb429da03a1cd727')]
+>>>

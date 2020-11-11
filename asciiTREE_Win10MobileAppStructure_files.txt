@@ -1,0 +1,247 @@
+Folder PATH listing for volume Windows
+Volume serial number is BA4C-BABD
+C:\USERS\MADEI\KIVYAPPS\PHONEAPP\TSKMGR
+|   
+.... (edited)
+|   
++---app_home
+|   |   copyLessonCMD.txt
+|   |   copyLSNno.cmd
+|   |   curLsn.cmd
+.... (edited)
+|   |   go.bat
+|   |   gov.bat
+|   |   main.py
+|   |   main.py_FixedLsn15
+|   |   main.py_Lsn10SignUpIN
+.... (edited)
+|   |   main.py_Lsn33
+|   |   main.py_Lsn34
+.... (edited)
+|   |   main.py_~Lsn21_andOR_22
+|   |   REQUIREMENTS_Lsn15n16_TeacherREF.txt
+|   |   restore_Lsn12.txt
+|   |   showLsnFySpecs.cmd
+|   |   _resetEnv.cmd
+|   |   
+|   +---app
+|   |   |   aDeltaReportFixed2MainKv.txt
+|   |   |   DeltaReportFixed2MainKv.txt
+|   |   |   main.kv
+|   |   |   main.kv_FixedLesn15
+|   |   |   main.kv_Lsn10SignUpIN
+|   |   |   main.kv_Lsn11
+.... (edited)
+|   |   |   main.kv_Lsn7
+|   |   |   main.kv_Lsn8loginPosn
+|   |   |   main.kv_Lsn9
+|   |   |   main.kv_~Lsn21_andOR_22
+|   |   |   view.py
+|   |   |   view.py_FixedLesn15
+.... (edited)
+|   |   |   view.py_~Lsn21_andOR_22
+|   |   |   __init__.py
+|   |   |   
+|   |   +---assets
+|   |   |   \---fonts
+|   |   |           Material-Design-Iconic-Font.ttf
+|   |   |           zmd.fontd
+|   |   |           
+|   |   +---storage
+|   |   |   |   db.CORRUPTED
+|   |   |   |   db.OLD
+|   |   |   |   db.py
+|   |   |   |   db.py_Lsn31_dbTested
+|   |   |   |   db.py_Lsn32_addTask2db
+|   |   |   |   db.py_Lsn37_failRestoreA
+|   |   |   |   db.sqlite
+|   |   |   |   db.sqliteCORRUPTED
+|   |   |   |   db.sqlite_Lsn37_failRestoreA
+|   |   |   |   
+|   |   |   \---__pycache__
+|   |   |           db.cpython-37.pyc
+|   |   |           
+|   |   \---__pycache__
+|   |           view.cpython-37.pyc
+|   |           __init__.cpython-37.pyc
+|   |           
+|   +---datepicker
+|   |   |   .gitignore
+|   |   |   datepicker.py
+|   |   |   README.md
+|   |   |   
+|   |   +---.git
+|   |   |   |   config
+.... (edited)
+|   |   |   |   packed-refs
+|   |   |   |   
+|   |   |   +---branches
+|   |   |   +---hooks
+|   |   |   |       applypatch-msg.sample
+.... (edited)
+|   |   |   |       update.sample
+|   |   |   |       
+|   |   |   +---info
+|   |   |   |       exclude
+|   |   |   |       
+|   |   |   +---logs
+|   |   |   |   |   HEAD
+|   |   |   |   |   
+|   |   |   |   \---refs
+|   |   |   |       +---heads
+|   |   |   |       |       master
+|   |   |   |       |       
+|   |   |   |       \---remotes
+|   |   |   |           \---origin
+|   |   |   |                   HEAD
+|   |   |   |                   
+|   |   |   +---objects
+|   |   |   |   +---01
+.... (edited)
+|   |   |   |   +---ff
+|   |   |   |   |       25b272051598895433e0231bff17520aa8ab61
+|   |   |   |   |       
+|   |   |   |   +---info
+|   |   |   |   \---pack
+|   |   |   \---refs
+|   |   |       +---heads
+|   |   |       |       master
+|   |   |       |       
+|   |   |       +---remotes
+|   |   |       |   \---origin
+|   |   |       |           HEAD
+|   |   |       |           
+|   |   |       \---tags
+|   |   \---__pycache__
+|   |           datepicker.cpython-36.pyc
+|   |           datepicker.cpython-37.pyc
+|   |           
+|   +---git_arch
+|   |   |   asciiTREE_Win10MobileAppStructure_files.txt
+|   |   |   asciiTREE_Win10MobileAppStructure_folders.txt
+|   |   |   __NotesCopyingFilesToRepo.txt
+|   |   |   
+|   |   +---BatchCMDlets
+|   |   |       copyLSNno.cmd
+|   |   |       curLsn.cmd
+|   |   |       dbL.cmd
+|   |   |       dbL.cmd_Lsn31_dbTested
+|   |   |       go.bat
+|   |   |       gov.bat
+|   |   |       showLsnFySpecs.cmd
+|   |   |       _resetEnv.cmd
+|   |   |       
+|   |   +---LessonFiles
+|   |   |       main.py
+|   |   |       main.py_FixedLsn15
+|   |   |       main.py_Lsn10SignUpIN
+.... (edited)
+|   |   |       main.py_Lsn9
+|   |   |       main.py_~Lsn21_andOR_22
+|   |   |       
+|   |   +---setUp_VENV
+|   |   |       pyvenv.cfg
+|   |   |       reqts11Sep20.txt
+|   |   |       _VENV_commands.txt
+|   |   |       
+|   |   \---troubleShootingDev
+|   |           GettingToDBcorruption.docx
+|   |           Issue_002_Summary.txt
+.... (edited)
+|   |           _db_2_functional_testing.txt
+|   |           __DeterminDB_Task_IsItToday.txt
+|   |           
+|   \---__pycache__
+|           main.cpython-37.pyc
+|           
++---setUp_VENV
+|       pyvenv.cfg
+|       reqts11Sep20.txt
+|       _VENV_commands.txt
+|       
++---src_home			<<-----<<< Added src_ to front of file for easy compares
+|   |   go.bat
+|   |   main.py
+|   |   main.py_FixedLsn15
+|   |   main.py_NoAds
+|   |   main.py_pseudoLsn15
+|   |   src_main.py		<<-----<<< Added src_ to front of file for easy compares
+|   |   
+|   +---app
+|   |   |   main.kv
+|   |   |   main.kv_FixedLsn15
+|   |   |   main.kv_NoAds
+|   |   |   main.kv_pseudoLsn15
+|   |   |   main.kv_~15
+|   |   |   src_main.kv		<<-----<<< Added src_ to front of file for easy compares
+|   |   |   src_view.py		<<-----<<< Added src_ to front of file for easy compares
+|   |   |   src__init__.py	<<-----<<< Added src_ to front of file for easy compares
+|   |   |   view.py
+|   |   |   view.py_FixedLsn15
+|   |   |   view.py_NoAds
+.... (edited)
+|   |   |   __init__.py_NoAds
+|   |   |   
+|   |   +---assets
+|   |   |   \---fonts
+|   |   |           Material-Design-Iconic-Font.ttf
+|   |   |           zmd.fontd
+.... (edited)
+|   |   |           db.cpython-37.pyc
+|   |   |           
+|   |   \---__pycache__
+|   |           view.cpython-36.pyc
+.... (edited)
+|   |           
+|   \---datepicker
+.... (edited)
+|       |   
+|       +---.git
+.... (edited)
+|       |   |   
+|       |   +---branches
+|       |   +---hooks
+|       |   |       applypatch-msg.sample
+.... (edited)
+|       |   |       update.sample
+|       |   |       
+|       |   +---info
+|       |   |       exclude
+|       |   |       
+|       |   +---logs
+|       |   |   |   HEAD
+
+.... (edited)
+|       |   |           \---origin
+|       |   |                   HEAD
+|       |   |                   
+|       |   +---objects
+.... (edited)
+|       |   |   +---ff
+|       |   |   |       25b272051598895433e0231bff17520aa8ab61
+|       |   |   |       
+|       |   |   +---info
+|       |   |   \---pack
+|       |   \---refs
+|       |       +---heads
+|       |       |       master
+|       |       |       
+|       |       +---remotes
+|       |       |   \---origin
+|       |       |           HEAD
+|       |       |           
+|       |       \---tags
+|       \---__pycache__
+|               datepicker.cpython-36.pyc
+|               datepicker.cpython-37.pyc
+|               
+\---troubleShootingDev
+        GettingToDBcorruption.docx
+.... (edited)
+        READ_ME_Summary File Below.txt
+        RESOLUTION_trail_error_Lesson37.txt
+        Summary_of_WARNING_Messages.txt
+        Tested_Manual_addTaskNew.txt
+        _db_2_functional_testing.txt
+        __DeterminDB_Task_IsItToday.txt
+        

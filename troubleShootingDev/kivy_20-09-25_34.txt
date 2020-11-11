@@ -1,0 +1,60 @@
+[INFO   ] Logger: Record log in C:\Users\madeI\.kivy\logs\kivy_20-09-25_34.txt
+[INFO   ] deps: Successfully imported "kivy_deps.angle" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.glew" 0.2.0
+[INFO   ] deps: Successfully imported "kivy_deps.sdl2" 0.2.0
+[INFO   ] Kivy: v1.11.1
+[INFO   ] Kivy: Installed at "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\__init__.py"
+[INFO   ] Python: v3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]
+[INFO   ] Python: Interpreter at "C:\Users\madeI\KivyApps\kivyENV\Scripts\python.exe"
+[INFO   ] Logger: Purge log fired. Analysing...
+[INFO   ] Logger: Purge 14 log files
+[INFO   ] Logger: Purge finished!
+[INFO   ] Factory: 184 symbols loaded
+[INFO   ] Image: Providers: img_tex, img_dds, img_sdl2, img_gif (img_pil, img_ffpyplayer ignored)
+[INFO   ] Text: Provider: sdl2
+[INFO   ] Window: Provider: sdl2
+[INFO   ] GL: Using the "OpenGL" graphics system
+[INFO   ] GL: GLEW initialization succeeded
+[INFO   ] GL: Backend used <glew>
+[INFO   ] GL: OpenGL version <b'4.3.0 - Build 20.19.15.5058'>
+[INFO   ] GL: OpenGL vendor <b'Intel'>
+[INFO   ] GL: OpenGL renderer <b'Intel(R) HD Graphics 4400'>
+[INFO   ] GL: OpenGL parsed version: 4, 3
+[INFO   ] GL: Shading version <b'4.30 - Build 20.19.15.5058'>
+[INFO   ] GL: Texture max size <16384>
+[INFO   ] GL: Texture max units <32>
+[INFO   ] Window: auto add sdl2 input provider
+[INFO   ] Window: virtual keyboard not allowed, single mode, not docked
+[INFO   ] GL: NPOT texture support is available
+[INFO   ] Base: Start application main loop
+[INFO   ] Base: Leaving application in progress...
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "main.py", line 9, in <module>
+[WARNING] stderr:     MainApp().run()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\app.py", line 855, in run
+[WARNING] stderr:     runTouchApp()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\base.py", line 504, in runTouchApp
+[WARNING] stderr:     EventLoop.window.mainloop()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\core\window\window_sdl2.py", line 747, in mainloop
+[WARNING] stderr:     self._mainloop()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\core\window\window_sdl2.py", line 479, in _mainloop
+[WARNING] stderr:     EventLoop.idle()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\base.py", line 342, in idle
+[WARNING] stderr:     self.dispatch_input()
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\base.py", line 327, in dispatch_input
+[WARNING] stderr:     post_dispatch_input(*pop(0))
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\base.py", line 293, in post_dispatch_input
+[WARNING] stderr:     wid.dispatch('on_touch_up', me)
+[WARNING] stderr:   File "kivy\_event.pyx", line 707, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\uix\behaviors\button.py", line 179, in on_touch_up
+[WARNING] stderr:     self.dispatch('on_release')
+[WARNING] stderr:   File "kivy\_event.pyx", line 703, in kivy._event.EventDispatcher.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1214, in kivy._event.EventObservers.dispatch
+[WARNING] stderr:   File "kivy\_event.pyx", line 1098, in kivy._event.EventObservers._dispatch
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\kivyENV\lib\site-packages\kivy\lang\builder.py", line 64, in custom_callback
+[WARNING] stderr:     exec(__kvlang__.co_value, idmap)
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\main.kv", line 367, in <module>
+[WARNING] stderr:     on_release: app.root.add_task(root,(task_name, task_date, task_time))
+[WARNING] stderr:   File "C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\app\view.py", line 112, in add_task
+[WARNING] stderr:     if self.db.add_task(taskb):
+[WARNING] stderr: TypeError: add_task() missing 1 required positional argument: 'task'

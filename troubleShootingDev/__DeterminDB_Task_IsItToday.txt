@@ -1,0 +1,38 @@
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home>python
+Python 3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from datetime import datetime
+>>> today = datetime.today()
+>>> today
+datetime.datetime(2020, 9, 26, 10, 20, 45, 96864)
+>>> task_date = '2020/01/01'
+>>> task_date2 = '2020/02/10'
+>>> _task_date = task_date.split('/')
+>>> _task_date = task_date2.split('/')
+>>> task_date = '2020/01/01'
+>>> _task_date = task_date.split('/')
+>>> _task_date2 = task_date2.split('/')
+>>> _task_date
+['2020', '01', '01']
+>>> _task = [int(x) for x in _task_date]
+>>> _task
+[2020, 1, 1]
+>>> _task2 = [int(x) for x in _task_date2]
+>>> _task2
+[2020, 2, 10]
+>>> date1 = datetime(_task[0],_task[1],_task[2])
+>>> date2 = datetime(_task2[0],_task2[1],_task2[2])
+>>> date2
+datetime.datetime(2020, 2, 10, 0, 0)
+>>> x = today - date1
+>>> x
+datetime.timedelta(days=269, seconds=37245, microseconds=96864)
+>>> x.days
+269
+>>> y = today - date2			<<=====<<< if days different to task = 0 then it's todays task, else upcoming task or TBD
+>>> y.days
+229
+>>> y
+datetime.timedelta(days=229, seconds=37245, microseconds=96864)
+>>>
+
