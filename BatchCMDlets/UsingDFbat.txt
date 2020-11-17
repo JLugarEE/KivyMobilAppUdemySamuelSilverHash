@@ -1,0 +1,46 @@
+Where I store my df.bat file, and how I use the PATH or pa.bat file, shown below on each command prompt (I type pa ENTER, then df *):
+
+C:\>type C:\Users\madeI\pa.bat
+set PATH=E:\bin;%PATH%
+
+(kivyENV) C:\Users\madeI\KivyApps\phoneApp\tskmgr\app_home\git_arch\LessonFiles>dir e:\bin\df.bat
+ Volume in drive E is USB20FD
+ Volume Serial Number is 0000-0001
+
+ Directory of e:\bin
+
+09/11/2020  07:33 PM               102 df.bat
+
+
+Example usage:
+================
+C:\Users\madeI>df							<<=====<<< NOT running PA(.bat) first!!! not what i want 
+Filesystem     1K-blocks     Used Available Use% Mounted on
+C:/git         954829828 78936908 875892920   9% /			<<=====<<< Running C:\git\usr\bin\df.exe (see path statement below)
+D:              19513340 17013072   2500268  88% /d
+E:              15840096  9598104   6241992  61% /e
+G:             241778880 25895424 215883456  11% /g
+
+C:\Users\madeI>pa
+
+C:\Users\madeI>set PATH=E:\bin;C:\x64\Py37\Scripts\;C:\x64\Py37\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\madeI\AppData\Local\Microsoft\WindowsApps;C:\Git\cmd;C:\Git\mingw64\bin;C:\Git\usr\bin;C:\Users\madeI\AppData\Local\GitHubDesktop\bin
+
+C:\Users\madeI>df
+ Directory of C:\Users\madeI
+11/17/2020  07:21 AM             1,669 .bash_history
+11/11/2020  12:35 PM               181 .gitconfig
+11/11/2020  06:34 PM             1,148 .viminfo
+11/06/2020  12:53 PM               121 anx.bat
+10/27/2020  01:40 PM                37 Cch180
+10/27/2020  01:41 PM                37 Cch180.cmd
+09/09/2020  07:59 PM               204 kivy_windows.bat
+09/19/2020  10:02 AM               119 kv.bat
+09/08/2020  12:26 PM             7,073 ListPackageShowInfo.txt
+10/17/2020  07:42 AM               131 my.bat
+09/06/2020  10:04 PM                24 pa.bat
+07/25/2020  07:31 AM                20 v.bat
+07/25/2020  07:32 AM               581 wrkVid.bat
+              13 File(s)         11,345 bytes
+
+C:\Users\madeI>
+
