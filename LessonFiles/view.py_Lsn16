@@ -1,0 +1,90 @@
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.button import Button
+from kivy.uix.modalview import ModalView
+from kivy.garden.circulardatetimepicker import CircularTimePicker as CTP
+
+from kivy.properties import StringProperty, NumericProperty
+
+from kivy.metrics import sp, dp
+from kivy.utils import rgba
+
+
+class NewTask(ModalView):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
+    def get_time(self):
+        mv = ModalView(size_hint=[.6, .7])
+        cl = CTP()
+        cl.bind(time=self.set_time)
+        mv.add_widget(cl)
+        mv.open()
+
+    def set_time(self, inst, value):
+        print(value)
+
+class Task(ButtonBehavior, BoxLayout):
+    """class representing a single task added by the user.
+
+    Parameters
+    ----------
+    **kw : any
+        Description of parameter `**kw`.
+
+    Attributes
+    ----------
+    name : str
+        task name
+    time : str
+        time when the task is expected to commence
+
+    """
+    name = StringProperty('')
+    og_name = StringProperty('')
+    time = StringProperty('')
+
+class MainWindow(BoxLayout):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
+
+    def add_new(self):
+        """Open a popup to get the task details
+
+        Returns
+        -------
+        None
+
+        """
+        nt = NewTask()
+        nt.open()
+
+
+
+    def auth_user(self, username, password):
+        """Authenticate a user given credentials
+        from inputs.
+
+        Parameters
+        ----------
+        username : kivy.uix.textinput.TextInput
+            textinput containing the username
+        password : kivy.uix.textinput.TextInput
+            textinput containing the user password
+
+        Returns
+        -------
+        None
+
+        """
+        uname = username.text
+        upass = password.text
+
+##        if self.db.auth_user((uname, upass)):
+##            self.ids.scrn_mngr.current = 'scrn_main'
+##
+##        username.text = ''
+##        password.text = ''
+
+        self.ids.scrn_mngr.current = 'scrn_main'

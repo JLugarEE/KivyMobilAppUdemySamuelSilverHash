@@ -1,0 +1,26 @@
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.properties import StringProperty, NumericProperty
+
+from kivy.metrics import sp, dp
+from kivy.utils import rgba
+
+class Task(BoxLayout):
+    """Single Task added by user."""
+    
+    name = StringProperty('')
+    time = StringProperty('')
+    def __init__(self, **kw)
+        super().__init__(**kw)
+
+class MainWindow(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(*kwargs)
+
+
+    def auth_user(self, username, password):
+        """Authenticate a user given credential inputs"""
+        uname = username.text
+        upass = password.text
+
+        self.ids.scrn_mngr.current = 'scrn_main'

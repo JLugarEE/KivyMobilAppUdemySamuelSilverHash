@@ -1,0 +1,41 @@
+#: import rgba kivy.utils.rgba
+
+<MainWindow>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: [1,1,1,1]
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            
+    ScreenManager:
+        id: scrn_mngr
+        Screen:
+            name: 'scrn_signin'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Go to Sign-Up'
+                    on_release: scrn_mngr.current = 'scrn_signup'
+        Screen:
+            name: 'scrn_signup'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Go to Main'
+                    on_release: scrn_mngr.current = 'scrn_main'
+        Screen:
+            name: 'scrn_main'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Go to Today'
+                    on_release: scrn_mngr.current = 'scrn_today'
+        Screen:
+            name: 'scrn_today'
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'Go to Sign-in'
+                    on_release: scrn_mngr.current = 'scrn_signin'

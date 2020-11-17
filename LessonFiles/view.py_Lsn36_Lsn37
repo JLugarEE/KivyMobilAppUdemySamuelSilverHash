@@ -1,0 +1,210 @@
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.button import Button
+from kivy.uix.modalview import ModalView
+from kivy.garden.circulardatetimepicker import CircularTimePicker as CTP
+
+from kivy.properties import StringProperty, NumericProperty
+from kivy.core.window import Window
+
+from kivy.metrics import sp, dp
+from kivy.utils import rgba
+from app.storage.db import Database
+
+from datetime import datetime
+
+class NewTask(ModalView):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+
+    def get_time(self):
+        mv = ModalView(size_hint=[.85,.65])
+        box = BoxLayout(orientation='vertical', size_hint=[.5,.5])
+        mv.add_widget(box)
+        
+        cl = CTP(color=[1,1,1,1])
+        cl.bind(time=self.set_time)
+
+        submit = Button(text='OK', background_normal='', background_color=[1,1,1,1], color=rgba('#0e1574ff'), size_hint_y=.2)
+        submit.bind(on_release=lambda x: self.update_time(cl.time, mv))
+        box.add_widget(cl)
+        #box.add_widget(Button(background_disabled= True))
+        box.add_widget(submit)
+        mv.open()
+
+    def set_time(self, inst, value):
+        print(value)
+
+    def update_time(self, time, mv):
+        mv.dismiss()
+        self.ids.task_time.text = str(time)
+
+class NewButton(ButtonBehavior, BoxLayout):
+    pass
+
+class Task(ButtonBehavior, BoxLayout):
+    """class representing a single task added by the user.
+
+    Parameters
+    ----------
+    **kw : any
+        Description of parameter `**kw`.
+
+    Attributes
+    ----------
+    name : str
+        task name
+    time : str
+        time when the task is expected to commence
+
+    """
+    name = StringProperty('')
+    time = StringProperty('')
+    date = StringProperty('')
+    #og_name = StringProperty('')
+
+class Today(Task):
+    pass
+
+class Upcoming(Task):
+    pass
+
+class MainWindow(BoxLayout):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.db = Database()
+
+        self.init_view()
+
+    def init_view(self):
+        """ delete a task """
+        all_tasks = self.db.get_tasks()
+
+        scroll_parent = Window              # ref. to size new widgets   
+        tw = self.ids.today_wrapper
+        #uw = self.ids.upcoming_wrapper     # was this but wrongly picked
+        uw = self.ids.upcomer  # adds to grid layout see main.kv 
+        
+        for t in all_tasks:
+            date, time = t[2].rsplit(' ',1)
+
+            if self.clean_date(date):
+                task = Today()
+                task.size_hint = (None, 1)          # use Window height
+                task.size = [scroll_parent.width/2.4, 45]
+                tw.add_widget(task)
+            else:
+                task = Upcoming()
+                # from KV upcoming          name: 'upcoming 01', size_hint: (1, None)
+                task.size_hint = [1, None]
+                # from KV upcoming          name: 'upcoming 01', height: mtx.dp(100)
+                task.height = dp(100)
+                uw.add_widget(task)
+
+            task = Today()
+            task.name = t[1]
+            print(date, time)
+            task.time = time
+            task.date = date
+            #task.size = [100, 200]
+
+            
+
+    def clean_date(self, date: str):
+        today = datetime.today()
+        _date = date.split('/')
+        if len(_date) < 3:
+            _date = date.split('-')
+        date_ = [int(x) for x in reversed(_date)]
+    
+            
+        task_date = datetime(date_[0],date_[1],date_[2])
+        print(task_date)
+        x = abs(today - task_date)
+        if x.days == 0:
+            return True
+        else:
+            return False
+        
+        
+    def delete_task(self, task: Today):    
+        """ delete a task """
+        name = task.name
+        if self.db.delete_task(name):
+            task.parent.remove_widget(task)
+
+    def add_new(self):
+        """Open a popup to get the task details
+
+        Returns
+        -------
+        None
+
+        """
+        nt = NewTask()
+        nt.open()
+
+    def add_task(self, mv, xtask: tuple):
+
+        error = False
+        scroll_parent = self.ids.scroll_parent
+        tw = self.ids.today_wrapper
+        for t in xtask:
+            if len(t.text) < 3:
+                t.hint_text = 'Field Required'
+                t.hint_text_color = [1,0,0,1]
+                error = True
+        if error:
+            pass
+        else:
+            task = Today()
+            task.name = xtask[0].text
+            task.time = xtask[2].text
+            task.date = xtask[1].text
+            task.size_hint = (None, None)
+            task.size = [scroll_parent.width/2.4, 0.9*scroll_parent.height]
+
+
+            # add task to db
+            date = ' '.join([xtask[1].text, xtask[2].text])
+            print(date)  # 25/09/2020 10:21:00
+            taskb = (xtask[0].text, date)
+            print(taskb)
+            if self.db.add_task(taskb):
+                tw.add_widget(task)
+                
+            mv.dismiss()
+            
+            # check if enough tasks to show
+            if len(tw.children) > 1:
+                for child in tw.children:
+                    if type(child) == NewButton:
+                        tw.remove_widget(child)
+                        break
+
+    def auth_user(self, username, password):
+        """Authenticate a user given credentials
+        from inputs.
+
+        Parameters
+        ----------
+        username : kivy.uix.textinput.TextInput
+            textinput containing the username
+        password : kivy.uix.textinput.TextInput
+            textinput containing the user password
+
+        Returns
+        -------
+        None
+
+        """
+##        uname = username.text
+##        upass = password.text
+##
+##        if self.db.auth_user((uname, upass)):
+##            self.ids.scrn_mngr.current = 'scrn_main'
+##
+##        username.text = ''
+##        password.text = ''
+
+        self.ids.scrn_mngr.current = 'scrn_main'
